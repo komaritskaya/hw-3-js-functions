@@ -31,8 +31,8 @@ function convert(obj) {
 }
 
 // Test:
-const user = {name: 'Jeremy', age: 24, role: 'Software Engineer'};
-console.log(convert(user)); // [["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
+var exampleUser = {name: 'Jeremy', age: 24, role: 'Software Engineer'};
+console.log(convert(exampleUser)); // [["name", "Jeremy"], ["age", 24], ["role", "Software Engineer"]]
 
 
 // 3
@@ -76,7 +76,6 @@ console.log(reverseWords('A fun little challenge!')); // "A nuf elttil !egnellah
 function stringExpansion(str) {
   var newArr = [];
   for (var i = 0; i < str.length; i++) {
-    console.log(str[i]);
     if (isNaN(Number(str[i])) && isNaN(Number(str[i-1]))) {
       newArr.push(str[i]);
     } else if (isNaN(Number(str[i+1]))) {
@@ -152,12 +151,14 @@ console.log(sum(1,3,5,7)); // 16
 // 9
 
 function countDown(number) {
-  if (number <= 0) { 
-    console.log(0);
-  } else {
-  console.log(number);
-  countDown(number - 1);
-  }
+  setTimeout(function() {
+    if (number <= 0) {
+      console.log(0);
+    } else {
+      console.log(number);
+      countDown(number - 1);
+    }
+  }, 1000)
 }
 
 // Test:
@@ -183,7 +184,7 @@ Function.prototype.myBind = function(context) {
 var user = {
   firstName: "Вася",
   sayHi() {
-    alert("Привет, " + this.firstName + "!");
+    console.log("Привет, " + this.firstName + "!");
   }
 };
 var sayHi = user.sayHi.myBind(user);
